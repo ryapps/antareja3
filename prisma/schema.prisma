@@ -1,0 +1,138 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String      @id @default(uuid())
+  nama      String
+  email     String      @unique
+  password  String
+  role      Role
+  verified  Boolean     @default(false)
+  token     String?
+  penilaian Penilaian[]
+  tim       Tim?
+}
+
+model Anggota {
+  id     String  @id @default(uuid())
+  nama   String
+  email  String  @unique
+  telp   String
+  foto   String
+  posisi Posisi
+  nisn   String?
+  kelas  Kelas
+  timId  String
+  Tim    Tim     @relation(fields: [timId], references: [id], onDelete: Cascade)
+
+  @@unique([posisi, timId])
+}
+
+model Penilaian {
+  id            String    @id @default(uuid())
+  created_at    DateTime? @default(now())
+  updated_at    DateTime  @updatedAt
+  user_id       String
+  tim_id        String    @unique
+  danpas        Int
+  detail_url    String
+  formasi       Int
+  note          String
+  pasukan       Int
+  pbb           Int
+  pbb_tambahan  Int
+  published     Boolean   @default(false)
+  variasi       Int
+  cerdas_cermat Int?
+  mascot        Int?
+  tim           Tim       @relation(fields: [tim_id], references: [id])
+  user          User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model Tim {
+  id           String      @id @default(uuid())
+  nama_tim     String
+  updated_at   DateTime    @updatedAt
+  pelatih      String
+  jenjang      Jenjang
+  confirmed    Boolean     @default(false)
+  userId       String      @unique
+  asal_sekolah String
+  tipe_tim     Tipe
+  foto_mascot  String?
+  no_pelatih   String
+  anggotas     Anggota[]
+  pembayaran   Pembayaran?
+  penilaian    Penilaian?
+  user         User        @relation(fields: [userId], references: [id])
+  link_berkas  String?
+  link_video   String?
+}
+
+model Pembayaran {
+  id       String  @id @default(uuid())
+  tim_id   String  @unique
+  bukti_tf String
+  bank     String
+  nama_rek String
+  isDP     Boolean
+  tim      Tim     @relation(fields: [tim_id], references: [id], onDelete: Cascade)
+}
+
+model Pengumuman {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  content   String
+}
+
+enum Jenjang {
+  SMP
+  SMA
+}
+
+enum Kelas {
+  VII
+  VIII
+  IX
+  X
+  XI
+  XII
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum Tipe {
+  SMALL
+  NORMAL
+}
+
+enum Posisi {
+  OFFICIAL
+  DANTON
+  B1S1
+  B1S2
+  B1S3
+  B2S1
+  B2S2
+  B2S3
+  B3S1
+  B3S2
+  B3S3
+  B4S1
+  B4S2
+  B4S3
+  B5S1
+  B5S2
+  B5S3
+  CERDAS_CERMAT1
+  CERDAS_CERMAT2
+}

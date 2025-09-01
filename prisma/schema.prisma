@@ -14,7 +14,7 @@ model User {
   password  String
   role      Role
   verified  Boolean     @default(false)
-  token     String?
+  token     String?     @unique
   penilaian Penilaian[]
   tim       Tim?
 }

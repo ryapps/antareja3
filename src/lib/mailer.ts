@@ -18,7 +18,7 @@ const getGmailService = () => {
 };
 
 const encodeMessage = (message: Buffer) => {
-  return Buffer.from(message)
+  return Buffer.from(message.toString())
     .toString("base64")
     .replace(/\+/g, "-")
     .replace(/\//g, "_")
@@ -58,7 +58,7 @@ export type mailMetaData = {
 export const sendMailTo = async (metadata: mailMetaData) => {
   const options = {
     to: metadata.to,
-    from: "LKBB Antareja 2024 <antareja@smktelkom-mlg.sch.id>",
+    from: "LKBB Antareja 2025 <antareja@smktelkom-mlg.sch.id>",
     // cc: "cc@mail.com",
     // replyTo: 'amit@labnol.org',
     subject: metadata.subject,
@@ -67,7 +67,7 @@ export const sendMailTo = async (metadata: mailMetaData) => {
     attachments: metadata.fileAttachments,
     textEncoding: "base64",
     headers: [
-      { key: "X-Application-Developer", value: "Moklet Developers" },
+      { key: "X-Application-Developer", value: "Antareja" },
       { key: "X-Application-Version", value: "v1" },
     ],
   };

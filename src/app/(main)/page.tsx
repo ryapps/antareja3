@@ -5,7 +5,7 @@ import Daftar from "./components/Daftar";
 import Hero from "./components/Hero";
 import Timeline from "./components/Timeline";
 import Juri from "./components/Juri";
-import Gallery from "./components/Gallery";
+import Throwback from "./components/Throwback";
 
 export default function LandingPage() {
   return (
@@ -15,7 +15,7 @@ export default function LandingPage() {
       <Video />
       <Timeline />
       <Juri />
-      <Gallery />
+      <Throwback />
       <Daftar />
       <Sponsor />
     </>

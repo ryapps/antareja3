@@ -9,11 +9,31 @@ export default function Kategori() {
         <div className="flex flex-col gap-3">
           <span className="flex flex-col gap-1">
             <H3 className="font-bold text-black">Jenjang Perlombaan</H3>
-            <H3 className="font-bold text-primary-500">Antareja 2024</H3>
+            <H3 className="font-bold text-primary-500">Antareja 2025</H3>
           </span>
-          <P>Antareja memiliki 2 Jenjang perlombaan</P>
+          <P>Antareja memiliki 3 Jenjang perlombaan</P>
         </div>
         <div className="w-full md:w-auto flex gap-10 flex-col xl:flex-row">
+          <figure className="bg-primary-500 p-[30px] rounded-3xl drop-shadow-glow">
+            <div className="flex flex-col gap-[17px] sm:gap-6">
+              <div className="flex gap-6 items-center">
+                <div className="p-[19px] bg-white rounded-2xl w-[62px] h-[62px] flex justify-center items-center">
+                  <Card />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <span className="font-bold text-[20px] sm:text-[30px] text-white">
+                    Rp 375.000
+                  </span>
+                  <span className="font-semibold text-xs sm:text-[18px] text-white">
+                    Paskibra Jenjang SD
+                  </span>
+                </div>
+              </div>
+              <SmallP className="text-white">
+                *Pendaftaran dimulai 1 September 2025*
+              </SmallP>
+            </div>
+          </figure>
           <figure className="bg-primary-500 p-[30px] rounded-3xl drop-shadow-glow">
             <div className="flex flex-col gap-[17px] sm:gap-6">
               <div className="flex gap-6 items-center">
@@ -30,7 +50,7 @@ export default function Kategori() {
                 </div>
               </div>
               <SmallP className="text-white">
-                *Pendaftaran 20 Mei 2024 - 5 Oktober 2024*
+                *Pendaftaran dimulai 1 September 2025 *
               </SmallP>
             </div>
           </figure>
@@ -50,7 +70,7 @@ export default function Kategori() {
                 </div>
               </div>
               <SmallP className="text-white">
-                *Pendaftaran 20 Mei 2024 - 5 Oktober 2024*
+                *Pendaftaran dimulai 1 September 2025*
               </SmallP>
             </div>
           </figure>

@@ -34,13 +34,13 @@ export default function Timeline() {
           <H3 className="text-[#272727] font-bold">
             <span className="text-primary-500">Timeline</span> Perlombaan
           </H3>
-          <P>Timeline perlombaan Antareja 2024</P>
+          <P>Timeline perlombaan Antareja 2025</P>
         </div>
         <div className="w-full flex flex-col gap-8 xl:hidden items-center">
           <div className="w-full flex gap-[38px] justify-center items-center">
             <TimelineItem
               title="Pendaftaran Peserta"
-              dateString="20 Mei 2024 - 5 Oktober 2024"
+              dateString="1 September 2025 - 8 November 2025"
               description="pendaftaran melalui website antareja.smktelkom-mlg.sch.id"
             />
             <TimelineLine />
@@ -49,14 +49,14 @@ export default function Timeline() {
             <TimelineLine />
             <TimelineItem
               title="Technical Meeting"
-              dateString="Sabtu, 7 September 2024"
+              dateString="11 & 18 Oktober 2025"
               description="dilaksanakan di SMK Telkom Malang"
             />
           </div>
           <div className="w-full flex gap-[38px] justify-center items-center">
             <TimelineItem
               title="UCL (Uji Coba Lapangan)"
-              dateString="Jumat, 11 Oktober 2024"
+              dateString="14 November 2025"
               description="15.00 - 18.00 WIB (Malang) 19.00 - 22.30 WIB (Luar Malang)"
             />
             <TimelineLine />
@@ -65,7 +65,7 @@ export default function Timeline() {
             <TimelineLine />
             <TimelineItem
               title="Pelaksanaan Lomba"
-              dateString="Sabtu, 12 Oktober 2024"
+              dateString="15 November 2025"
               description="06.00 WIB - selesai di SMK Telkom Malang"
             />
           </div>
@@ -73,25 +73,25 @@ export default function Timeline() {
         <div className="xl:flex items-center justify-between hidden">
           <TimelineItem
             title="Pendaftaran Peserta"
-            dateString="20 Mei - 5 Oktober 2024"
+            dateString="1 September - 8 November 2025"
             description="pendaftaran melalui website antareja.smktelkom-mlg.sch.id"
           />
           <TimelineLine />
           <TimelineItem
             title="Technical Meeting"
-            dateString="Sabtu, 7 September 2024"
+            dateString="11 & 18 Oktober 2025"
             description="dilaksanakan di SMK Telkom Malang"
           />
           <TimelineLine />
           <TimelineItem
             title="Uji Coba Lapangan"
-            dateString="Jumat, 11 Oktober 2024"
+            dateString="14 November 2025"
             description="15.00 - 18.00 WIB (Malang) 19.00 - 22.30 WIB (Luar Malang)"
           />
           <TimelineLine />
           <TimelineItem
             title="Pelaksanaan Lomba"
-            dateString="Sabtu, 12 Oktober 2024"
+            dateString="15 November 2025"
             description="06.00 WIB - selesai di SMK Telkom Malang"
           />
         </div>

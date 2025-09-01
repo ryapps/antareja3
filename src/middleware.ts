@@ -9,7 +9,6 @@ export default withAuth(function middleware(req) {}, {
         (pathname.startsWith("/admin") && token?.role !== "ADMIN") ||
         (pathname.startsWith("/dashboard") && token?.role !== "USER");
 
-      // Return true if there is no unauthorized conditions met
       return !unauthorizedConditions;
     },
   },

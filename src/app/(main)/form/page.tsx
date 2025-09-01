@@ -9,8 +9,8 @@ export default async function Form() {
   if (!session) return redirect("/auth/login");
 
   const user = await findUser({ id: session.user?.id });
-
-  if (!user?.verified) return redirect("/confirmation");
+  console.log(user)
+  if (user?.verified == false) return redirect("/confirmation");
 
   const timByUser = await findTim({ userId: session.user?.id });
   if (timByUser) return redirect("/dashboard");

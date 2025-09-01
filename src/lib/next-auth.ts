@@ -1,5 +1,5 @@
 import { validateHash } from "@/lib/hash";
-import { findUser } from "@/queries/user.query";
+import { findUser } from "@/queries/user.query"; // prisma query user
 import { Role } from "@prisma/client";
 import {
   getServerSession as nextAuthGetServerSession,
@@ -9,11 +9,10 @@ import {
 import type { DefaultJWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+// -----------------
+// 🔹 Type Augmentation
+// -----------------
 declare module "next-auth" {
-  /**
-   * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
-  // eslint-disable-next-line no-unused-vars
   interface Session {
     user?: {
       id: string;
@@ -25,8 +24,6 @@ declare module "next-auth" {
 }
 
 declare module "next-auth/jwt" {
-  /** Returned by the `jwt` callback and `getToken`, when using JWT sessions */
-  // eslint-disable-next-line no-unused-vars
   interface JWT extends DefaultJWT {
     id: string;
     role: Role;
@@ -35,6 +32,9 @@ declare module "next-auth/jwt" {
   }
 }
 
+// -----------------
+// 🔹 NextAuth Options
+// -----------------
 export const authOptions: AuthOptions = {
   theme: {
     colorScheme: "light",
@@ -43,45 +43,33 @@ export const authOptions: AuthOptions = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 30 * 24 * 60 * 60, // A month (in seconds)
+    maxAge: 30 * 24 * 60 * 60, // 30 hari
   },
   providers: [
     CredentialsProvider({
       name: "Credentials",
       credentials: {
-        email: {
-          label: "Email",
-          type: "email",
-          placeholder: "user@example.com",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-          placeholder: "********",
-        },
+        email: { label: "Email", type: "email", placeholder: "user@example.com" },
+        password: { label: "Password", type: "password", placeholder: "********" },
       },
       async authorize(credentials) {
         try {
-          let user = await findUser({ email: credentials?.email });
-          if (!user || !credentials?.password) return null;
+          if (!credentials?.email || !credentials.password) return null;
 
-          const comparePassword = validateHash(
-            credentials.password,
-            user.password
-          );
+          const user = await findUser({ email: credentials.email });
+          if (!user) return null;
 
-          if (!comparePassword) return null;
+          const isValidPassword = validateHash(credentials.password, user.password);
+          if (!isValidPassword) return null;
 
-          const authorizedUser = {
+          return {
             id: user.id,
             role: user.role,
             nama: user.nama,
             email: user.email,
           };
-
-          return authorizedUser;
         } catch (e) {
-          console.error(e);
+          console.error("❌ Authorize Error:", e);
           return null;
         }
       },
@@ -92,32 +80,28 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     async redirect({ url, baseUrl }) {
-      const redirectUrl = url.startsWith("/")
-        ? new URL(url, baseUrl).toString()
-        : url;
-      return redirectUrl;
+      return url.startsWith("/") ? `${baseUrl}${url}` : url;
     },
     async signIn({ user }) {
       const userInDb = await findUser({ email: user.email! });
-      if (!userInDb) return false;
-
-      return true;
+      return !!userInDb;
     },
     async jwt({ token, user }) {
-      if (user?.email) {
-        let userInDb = await findUser({ email: user?.email });
-        token.id = userInDb?.id ?? "";
-        token.role = userInDb?.role ?? "USER";
-        token.nama = userInDb?.nama ?? token.nama;
-        token.email = userInDb?.email ?? token.email;
+      // inject data saat login pertama kali
+      if (user) {
+        token.id = (user as any).id;
+        token.role = (user as any).role;
+        token.nama = (user as any).nama;
+        token.email = user.email!;
       }
       return token;
     },
     async session({ session, token }) {
-      if (token.email && session.user) {
-        session.user.role = token?.role || "USER";
-        session.user.id = token?.id;
-        session.user.nama = token?.nama;
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.role = token.role as Role;
+        session.user.nama = token.nama as string;
+        session.user.email = token.email as string;
       }
       return session;
     },
@@ -125,4 +109,5 @@ export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
 };
 
+// helper buat server
 export const getServerSession = () => nextAuthGetServerSession(authOptions);

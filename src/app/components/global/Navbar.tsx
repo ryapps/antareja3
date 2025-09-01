@@ -21,7 +21,7 @@ const NavOptions: NavOption[] = [
   { label: "Video", href: "/#video" },
   { label: "Pendaftaran", href: "/#daftar" },
   { label: "Juri", href: "/#juri" },
-  { label: "Galeri", href: "/#gallery" },
+  { label: "Throwback", href: "/#throwback" },
 ];
 
 export default function Navbar() {

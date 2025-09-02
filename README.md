@@ -37,7 +37,7 @@ Technologies used in the project:
 - Next.JS
 - NextAuth.JS
 - Prisma
-- PostgreSQL
+- MySQL
 
 <h2>🛡️ License:</h2>
 

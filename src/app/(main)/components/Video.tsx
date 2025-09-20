@@ -40,18 +40,18 @@ export default function Video() {
             </P>
           </div>
           <PrimaryLinkButton
-            href="https://drive.google.com/file/d/1JdewtpA0-Tcye436lVckEu5lY940Yy13/view?usp=sharing"
+            href="https://drive.google.com/file/d/1SlmV82GvAk9OS0HNVWS-AUYIe6YiuU8C/view?usp=drive_link"
             className="inline-flex gap-2 items-center mb-[40px]"
           >
             Unduh buku panduan <FaDownload />
           </PrimaryLinkButton>
           <iframe
-            src="https://www.youtube.com/embed/MGh3e1AQRK0?si=YTTEeWeJ4qVEQ3em"
+            src=""
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            className="object-cover rounded-[20px] sm:w-[500px] h-[250px] sm:h-[276px] w-full"
+            className="object-cover rounded-[20px] sm:w-[500px] h-[250px] sm:h-[276px] w-full bg-gray-700"
           />
         </div>
         <div className="max-w-full xl:max-w-[738px] flex flex-wrap gap-6 gap-y-6 xl:gap-y0 md:gap-9 mt-[10px] justify-center sm:justify-center md:justify-center items-center xl:justify-normal">
@@ -91,7 +91,7 @@ export default function Video() {
             </P>
           </div>
           <PrimaryLinkButton
-            href="https://drive.google.com/file/d/1JdewtpA0-Tcye436lVckEu5lY940Yy13/view?usp=sharing"
+            href="https://drive.google.com/file/d/1SlmV82GvAk9OS0HNVWS-AUYIe6YiuU8C/view?usp=drive_link"
             className="inline-flex gap-2 items-center mb-[40px]"
           >
             Unduh buku panduan <FaDownload />
@@ -99,12 +99,12 @@ export default function Video() {
           <iframe
             width="500"
             height="276"
-            src="https://www.youtube.com/embed/MGh3e1AQRK0?si=YTTEeWeJ4qVEQ3em"
+            src=""
             title="YouTube video player"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
-            className="object-cover rounded-[20px] sm:w-[500px] h-[276px] w-full"
+            className="object-cover rounded-[20px] sm:w-[500px] h-[276px] w-full bg-gray-700"
           />
         </div>
       </div>

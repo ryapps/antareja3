@@ -5,28 +5,23 @@ import Image from "next/image";
 
 const juris = [
   {
-    image: "/image/juri1.png",
-    name: "Adi Prasetyo Utomo",
+    image: "/image/man.png",
+    name: "-",
     title: "Juri",
   },
   {
-    image: "/image/juri2.png",
-    name: "Sendy Cahyono S.Tr.T",
+    image: "/image/man.png",
+    name: "-",
     title: "Juri",
   },
   {
-    image: "/image/juri3.png",
-    name: "Peltu Herman Nurcahya",
+    image: "/image/man.png",
+    name: "-",
     title: "Juri",
   },
   {
-    image: "/image/juri4.png",
-    name: "Sersan Mayor Suroto",
-    title: "Juri",
-  },
-  {
-    image: "/image/juri5.svg",
-    name: "Bogie Nasution",
+    image: "/image/man.png",
+    name: "-",
     title: "Juri",
   },
 ];
@@ -95,11 +90,6 @@ export default function Juri() {
             image={juris[3].image}
             name={juris[3].name}
             title={juris[3].title}
-          />
-          <JuriCard
-            image={juris[4].image}
-            name={juris[4].name}
-            title={juris[4].title}
           />
         </div>
       </div>

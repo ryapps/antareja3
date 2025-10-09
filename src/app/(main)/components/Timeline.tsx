@@ -48,8 +48,8 @@ export default function Timeline() {
           <div className="w-full flex gap-[38px] justify-center items-center">
             <TimelineLine />
             <TimelineItem
-              title="Technical Meeting"
-              dateString="11 & 18 Oktober 2025"
+              title="Technical Meeting Peserta & Bazar"
+              dateString="11 Oktober 2025"
               description="dilaksanakan di SMK Telkom Malang"
             />
           </div>

@@ -12,6 +12,7 @@ import { toast } from "sonner";
 const jenjang = [
   { label: "SMA/Sederajat", value: "SMA" },
   { label: "SMP/Sederajat", value: "SMP" },
+  { label: "SD/Sederajat", value: "SD" },
 ];
 
 const size = [
@@ -26,6 +27,7 @@ const paymentType = [
 
 export default function FormComponent({ id }: { id: string }) {
   const [isDP, setIsDP] = useState(false);
+  const [isSD, setIsSD] = useState(false);
   const router = useRouter();
 
   async function submitForm(data: FormData) {
@@ -91,6 +93,7 @@ export default function FormComponent({ id }: { id: string }) {
             options={jenjang}
             id="jenjang"
             placeholder="Pilih Jenjang"
+            onChange={(e) => (e?.value === "SD" ? setIsSD(true) : setIsSD(false))}  
             classNames={{
               placeholder: () => "text-[#C8C8C8]",
               control: () =>
@@ -170,12 +173,12 @@ export default function FormComponent({ id }: { id: string }) {
             <P>
               Lakukan pembayaran dengan nominal{" "}
               <span className="text-black font-bold">
-                {isDP ? "Rp. 200.000,00" : "Rp. 400.000,00"}
+                {isDP ? "Rp200.000,00" : isSD ? "Rp375.000,00" : "Rp400.000,00"}
               </span>{" "}
               ke:
             </P>
             <P className="text-black">
-              1410024777096 <br />
+              1440027643102 <br />
               Bank Mandiri <br /> a.n Firman Hadi Amrullah Z
             </P>
           </div>

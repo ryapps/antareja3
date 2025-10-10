@@ -92,11 +92,18 @@ model Pengumuman {
 }
 
 enum Jenjang {
+  SD
   SMP
   SMA
 }
 
 enum Kelas {
+  I
+  II
+  III
+  IV
+  V
+  VI
   VII
   VIII
   IX
@@ -133,6 +140,4 @@ enum Posisi {
   B5S1
   B5S2
   B5S3
-  CERDAS_CERMAT1
-  CERDAS_CERMAT2
 }

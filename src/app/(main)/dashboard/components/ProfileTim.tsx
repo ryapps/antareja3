@@ -51,12 +51,6 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
   const [official] = useState(
     tim.anggotas.find((value) => value.posisi === "OFFICIAL")
   );
-  const [cerdas_cermat1] = useState(
-    tim.anggotas.find((value) => value.posisi === "CERDAS_CERMAT1")
-  );
-  const [cerdas_cermat2] = useState(
-    tim.anggotas.find((value) => value.posisi === "CERDAS_CERMAT2")
-  );
 
   return (
     <div className="block">
@@ -71,30 +65,6 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
         </P>
       )}
       <div className="py-16 px-10 bg-neutral-300 rounded-lg flex flex-col gap-12">
-        {tim.jenjang === "SMP" && (
-          <div className="pb-10">
-            <AnggotaCardsWrapper className="flex flex-wrap gap-10">
-              <AnggotaCard
-                href={`/dashboard/anggota/cerdas_cermat1`}
-                image={
-                  cerdas_cermat1?.foto ?? "/placeholder-profile-picture.jpg"
-                }
-                name={cerdas_cermat1?.nama ?? "Belum diisi"}
-                posisi={"CERDAS CERMAT"}
-                key={"CC1"}
-              />
-              <AnggotaCard
-                href={`/dashboard/anggota/cerdas_cermat2`}
-                image={
-                  cerdas_cermat2?.foto ?? "/placeholder-profile-picture.jpg"
-                }
-                name={cerdas_cermat2?.nama ?? "Belum diisi"}
-                posisi={"CERDAS CERMAT"}
-                key={"CC2"}
-              />
-            </AnggotaCardsWrapper>
-          </div>
-        )}
         <AnggotaCardsWrapper className="flex flex-wrap gap-10">
           <AnggotaCard
             href={`/dashboard/anggota/danton`}
@@ -110,19 +80,6 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
             key={"official"}
             posisi={official?.posisi ?? "OFFICIAL"}
           />
-          {tim.jenjang === "SMA" && (
-            <AnggotaCard
-              href={`/dashboard/mascot`}
-              image={
-                tim.foto_mascot && tim.foto_mascot !== ""
-                  ? tim.foto_mascot
-                  : "/placeholder-profile-picture.jpg"
-              }
-              name={tim.foto_mascot ? "Mascot " + tim.nama_tim : "Belum diisi"}
-              posisi={"MASCOT"}
-              key={"mascot"}
-            />
-          )}
         </AnggotaCardsWrapper>
         {tim.tipe_tim === "NORMAL"
           ? rowsMapNormal.map((row, i) => (

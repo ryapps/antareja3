@@ -16,6 +16,12 @@ const kelas: { label: Kelas; value: Kelas }[] = [
   { label: "IX", value: "IX" },
   { label: "VIII", value: "VIII" },
   { label: "VII", value: "VII" },
+  { label: "VI", value: "VI" },
+  { label: "V", value: "V" },
+  { label: "IV", value: "IV" },
+  { label: "III", value: "III" },
+  { label: "II", value: "II" },
+  { label: "I", value: "I" },
 ];
 
 export default function EditAnggotaForm({

@@ -19,7 +19,7 @@ const NavOptions: NavOption[] = [
   { label: "Beranda", href: "/#hero" },
   { label: "Antareja", href: "/#antareja" },
   { label: "Video", href: "/#video" },
-  { label: "Pendaftaran", href: "/#daftar" },
+  { label: "Timeline", href: "/#timeline" },
   { label: "Juri", href: "/#juri" },
   { label: "Throwback", href: "/#throwback" },
 ];
@@ -61,6 +61,8 @@ export default function Navbar() {
             {status === "authenticated" ? (
               <div className="relative">
                 <button
+                  type="button"
+                  aria-label="User"
                   className="w-[40px] h-[40px] rounded-full overflow-hidden"
                   onClick={() => setIsOpened(!isOpened)}
                 >
@@ -123,6 +125,8 @@ export default function Navbar() {
           </div>
         </div>
         <button
+          type="button"
+          aria-label="Toggle Navigation"
           className="block xl:hidden"
           onClick={() => setIsExpanded(!isExpanded)}
         >

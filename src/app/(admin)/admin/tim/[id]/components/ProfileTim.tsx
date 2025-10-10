@@ -1,7 +1,6 @@
 "use client";
 
-import { H2, H3, P } from "@/app/components/global/Text";
-import SectionWrapper from "@/app/components/global/Wrapper";
+import { H3, P } from "@/app/components/global/Text";
 import { TimWithRelations } from "@/types/entityRelations";
 import { ReactNode, useState } from "react";
 import { AnggotaCard } from "./parts/AnggotaCard";
@@ -42,13 +41,6 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
     tim.anggotas.find((value) => value.posisi === "OFFICIAL")
   );
 
-  const [cc1] = useState(
-    tim.anggotas.find((value) => value.posisi === "CERDAS_CERMAT1")
-  );
-  const [cc2] = useState(
-    tim.anggotas.find((value) => value.posisi === "CERDAS_CERMAT2")
-  );
-
   const tim_id = tim.id;
 
   return (
@@ -60,7 +52,7 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
           }`}
         >
           Informasi Anggota ({sizeMap[tim.tipe_tim]} Pasukan + Danton + Official
-          + Mascot)
+          )
         </H3>
       ) : (
         <H3
@@ -69,7 +61,7 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
           }`}
         >
           Informasi Anggota ({sizeMap[tim.tipe_tim]} Pasukan + Danton + Official
-          + Cerdas Cermat)
+          )
         </H3>
       )}
 
@@ -79,42 +71,6 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
         </P>
       )}
       <div className="py-5 right-0 rounded-lg flex flex-col gap-5 sm:gap-12 mb-10">
-        {tim.jenjang === "SMA" ? (
-          <AnggotaCardsWrapper>
-            <AnggotaCard
-              image={
-                tim.foto_mascot && tim.foto_mascot !== ""
-                  ? tim.foto_mascot
-                  : "/placeholder-profile-picture.jpg"
-              }
-              name={
-                tim.foto_mascot && tim.foto_mascot !== ""
-                  ? "Mascot " + tim.nama_tim
-                  : "Belum Diisi"
-              }
-              posisi={"MASCOT"}
-            />
-          </AnggotaCardsWrapper>
-        ) : (
-          <AnggotaCardsWrapper>
-            <AnggotaCard
-              href={`/admin/tim/${tim_id}/cerdas_cermat1`}
-              image={cc1?.foto ?? "/placeholder-profile-picture.jpg"}
-              name={
-                cc1?.foto ? "cerdas cermat 1 " + tim.nama_tim : "Belum Diisi"
-              }
-              posisi={"Cerdas Cermat 1"}
-            />
-            <AnggotaCard
-              href={`/admin/tim/${tim_id}/cerdas_cermat2`}
-              image={cc2?.foto ?? "/placeholder-profile-picture.jpg"}
-              name={
-                cc2?.foto ? "cerdas cermat 2 " + tim.nama_tim : "Belum Diisi"
-              }
-              posisi={"Cerdas Cermat 2"}
-            />
-          </AnggotaCardsWrapper>
-        )}
 
         <AnggotaCardsWrapper>
           <AnggotaCard

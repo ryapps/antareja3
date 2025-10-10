@@ -9,7 +9,7 @@ function TimelineItem({
 }: Readonly<{ title: string; dateString: string; description: string }>) {
   return (
     <div className="flex flex-col items-center gap-3 w-[214px]">
-      <div className="flex justify-center items-center bg-primary-500 px-[14px] py-[10px] rounded-2xl">
+      <div className="flex justify-center text-center items-center bg-primary-500 px-[14px] py-[10px] rounded-2xl">
         <span className="text-white font-bold">{title}</span>
       </div>
       <div className="flex flex-col items-center gap-1 w-full">
@@ -28,7 +28,7 @@ function TimelineLine() {
 
 export default function Timeline() {
   return (
-    <SectionWrapper id="daftar">
+    <SectionWrapper id="timeline">
       <div className="relative w-full flex flex-col gap-10">
         <div className="flex flex-col gap-3">
           <H3 className="text-[#272727] font-bold">
@@ -78,8 +78,8 @@ export default function Timeline() {
           />
           <TimelineLine />
           <TimelineItem
-            title="Technical Meeting"
-            dateString="11 & 18 Oktober 2025"
+            title="Technical Meeting Peserta & Bazar"
+            dateString="11 Oktober 2025"
             description="dilaksanakan di SMK Telkom Malang"
           />
           <TimelineLine />

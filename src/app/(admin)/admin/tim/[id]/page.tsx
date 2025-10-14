@@ -27,7 +27,6 @@ export default async function TimEdit({ params }: { params: { id: string } }) {
     userId: "",
     updated_at: new Date(),
     tipe_tim: "NORMAL",
-    foto_mascot: "",
     link_berkas: "",
     link_video: "",
   };

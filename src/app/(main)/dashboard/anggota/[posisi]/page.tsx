@@ -13,6 +13,7 @@ export default async function EditAnggota({
 
   const session = await getServerSession();
   const tim = (await findTim({ userId: session?.user?.id })) as Tim;
+
   const anggota =
     (await findAnggota({
       posisi_timId: {
@@ -29,12 +30,12 @@ export default async function EditAnggota({
       nisn: "",
       posisi: params.posisi.toUpperCase(),
       telp: "",
-      timId: "",
+      timId: tim?.id,
     } as unknown as Anggota);
 
   return (
     <div className="my-16">
-      <EditAnggotaForm anggota={anggota} />
+      <EditAnggotaForm anggota={anggota} tim={tim} />
     </div>
   );
 }

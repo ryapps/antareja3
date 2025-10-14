@@ -23,7 +23,8 @@ export async function upsertAnggotaForm(
   const telp = data.get("telp") as string;
   const nisn = data.get("nisn") as string | undefined;
   const foto = data.get("foto") as File;
-  const kelas = data.get("kelas") as Kelas;
+  const kelas = data.get("kelas") as Kelas | undefined;
+  const link_ig = data.get("link_ig") as string | undefined;
 
   if (foto.size / 1024 / 1024 > 10)
     return { success: false, message: "Max. Ukuran foto adalah 10MB" };
@@ -46,6 +47,7 @@ export async function upsertAnggotaForm(
       nisn,
       kelas,
       posisi,
+      link_ig,
     };
 
     const anggotaUpdate = { ...anggotaData, foto: fotoUrl ?? undefined };

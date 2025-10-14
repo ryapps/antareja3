@@ -150,26 +150,6 @@ export default function PenilaianForm({
           onWheel={(e) => e.currentTarget.blur()}
         />
         <TextField
-          id="mascot"
-          type="number"
-          label="Mascot"
-          name="mascot"
-          value={data?.mascot ?? 0} // Set default value to 0
-          placeholder="Nilai Mascot"
-          required={edit ?? false}
-          onWheel={(e) => e.currentTarget.blur()}
-        />
-        <TextField
-          id="cerdas_cermat"
-          type="number"
-          label="Cerdas Cermat"
-          name="cerdas_cermat"
-          value={data?.cerdas_cermat ?? 0} // Set default value to 0
-          placeholder="Nilai Cerdas Cermat"
-          required={edit ?? false}
-          onWheel={(e) => e.currentTarget.blur()}
-        />
-        <TextField
           id="detail"
           type="url"
           label="URL Detail Penilaian"

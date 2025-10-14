@@ -4,6 +4,25 @@ import { revalidatePath } from "next/cache";
 import { updateTim, deleteTim } from "@/queries/tim.query";
 import { Tipe } from "@prisma/client"
 
+export async function getTimById(timId: string) {
+  try {
+    const tim = await prisma.tim.findUnique({
+      where: { id: timId },
+      include: {
+        anggotas: true,
+        pembayaran: true,
+      },
+    });
+
+    if (!tim) return { success: false, message: "Tim tidak ditemukan" };
+    console.log(tim);
+    return { success: true, data: tim };
+  } catch (error) {
+    console.error(error);
+    return { success: false, message: "Gagal mengambil data tim" };
+  }
+}
+
 export async function updateTimForm(id: string, formData: FormData) {
   const link_berkas = formData.get("link_berkas") as string;
   const link_video = formData.get("link_video") as string;

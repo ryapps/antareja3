@@ -51,21 +51,31 @@ function TimLayout({ tim }: Readonly<{ tim: TimWithRelations }>) {
   const [official] = useState(
     tim.anggotas.find((value) => value.posisi === "OFFICIAL")
   );
+  const [pelatih] = useState(
+    tim.anggotas.find((value) => value.posisi === "PELATIH")
+  );
 
   return (
     <div className="block">
       <H3
         className={`${anggotas.length !== sizeMap[tim.tipe_tim] ? "" : "mb-4"}`}
       >
-        Anggota Tim ({sizeMap[tim.tipe_tim]} Pasukan + Danton + Official)
+        Anggota Tim ({sizeMap[tim.tipe_tim]} Pasukan + Danton + Official + Pelatih)
       </H3>
-      {anggotas.length !== sizeMap[tim.tipe_tim] + 2 && (
+      {anggotas.length !== sizeMap[tim.tipe_tim] + 3 && (
         <P className="text-yellow-600 mb-4 animate-pulse">
           (Data belum lengkap)
         </P>
       )}
       <div className="py-16 px-10 bg-neutral-300 rounded-lg flex flex-col gap-12">
         <AnggotaCardsWrapper className="flex flex-wrap gap-10">
+          <AnggotaCard
+            href={`/dashboard/anggota/pelatih`}
+            image={pelatih?.foto ?? "/placeholder-profile-picture.jpg"}
+            name={tim.pelatih ?? "Belum diisi"}
+            key={"pelatih"}
+            posisi={pelatih?.posisi ?? "PELATIH"}
+          />
           <AnggotaCard
             href={`/dashboard/anggota/danton`}
             image={danton?.foto ?? "/placeholder-profile-picture.jpg"}

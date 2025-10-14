@@ -50,6 +50,7 @@ export default function TimTable({ data }: { data: TimWithRelations[] }) {
       cell: (row: TimWithRelations) => (
         <div className="flex justify-center items-center">
           <button
+            aria-label="Hapus"
             onClick={async () => {
               const confirmDelete = confirm(
                 "Apakah anda yakin ingin menghapus tim?"

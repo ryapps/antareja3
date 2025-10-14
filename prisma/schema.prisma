@@ -27,7 +27,8 @@ model Anggota {
   foto   String
   posisi Posisi
   nisn   String?
-  kelas  Kelas
+  link_ig     String?
+  kelas  Kelas?
   timId  String
   Tim    Tim     @relation(fields: [timId], references: [id], onDelete: Cascade)
 
@@ -49,8 +50,6 @@ model Penilaian {
   pbb_tambahan  Int
   published     Boolean   @default(false)
   variasi       Int
-  cerdas_cermat Int?
-  mascot        Int?
   tim           Tim       @relation(fields: [tim_id], references: [id])
   user          User      @relation(fields: [user_id], references: [id], onDelete: Cascade)
 }
@@ -65,7 +64,6 @@ model Tim {
   userId       String      @unique
   asal_sekolah String
   tipe_tim     Tipe
-  foto_mascot  String?
   no_pelatih   String
   anggotas     Anggota[]
   pembayaran   Pembayaran?
@@ -125,6 +123,7 @@ enum Tipe {
 enum Posisi {
   OFFICIAL
   DANTON
+  PELATIH
   B1S1
   B1S2
   B1S3
